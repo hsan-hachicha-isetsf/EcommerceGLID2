@@ -1,0 +1,827 @@
+.App {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+    max-width: 800px;
+    margin: auto;
+  }
+  
+  .pagination {
+    margin-top: 20px;
+    margin-bottom: 20px; /* Ajoute de l'espace en bas de la pagination */
+    margin-right: 20px;
+    display: flex;
+    justify-content: right;
+  
+  }
+  
+  .pagination button {
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    padding: 10px 15px;
+    margin: 0 1px;
+    color: blue;
+    font-size: 14;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    border-radius: 5px; /* Bordures arrondies */
+    transition: background-color 0.3s, transform 0.3s; /* Transitions fluides */
+    box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.1); /* Ombre pour les boutons */
+  }
+  
+  .pagination button:hover {
+    background-color: #ddd;
+    transform: translateY(-2px); /* Effet de soulèvement au survol */
+  }
+  
+  .pagination button:disabled {
+    background-color: #ddd;
+    color: white;
+    cursor: not-allowed;
+    box-shadow: none; /* Supprime l'ombre pour les boutons désactivés */
+  }
+  
+  .pagination button.active {
+    background-color: #007bff;
+    color: white;
+    cursor: default;
+    font-weight: bold;
+    box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.2); /* Ombre plus prononcée pour le bouton actif */
+  }
+  .table-container {
+    /* max-height: 600px;  Hauteur fixe pour activer le défilement */
+     /*overflow-y: auto;  /* Activer le défilement vertical */
+     border: 1px solid #ddd; /* Bordure pour le conteneur */
+     border-radius: 8px; /* Coins arrondis pour le conteneur */
+     margin: 20px 0; /* Marge autour du conteneur */
+     padding: 0 10px; /* Espacement intérieur */
+     
+     
+   }
+   table {
+     width: 100%; /* Largeur flexible du tableau */
+     border-collapse: collapse; /* Fusionner les bordures des cellules adjacentes */
+     margin: 20px auto; /* Marge autour du tableau */
+       
+       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+       
+       box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1);
+       
+   }
+  /* Header Styles */
+  thead {
+    background-color: #009879;
+    color: #ffffff;
+  }
+  
+  thead th {
+  background-color: #4CAF50; /* Couleur de fond bleue */
+  color: white; /* Texte blanc */
+  text-align: center; /* Alignement central du texte */
+  padding: 10px 20px; /* Rembourrage pour le contenu des en-têtes */
+  border: 1px solid #ddd; /* Bordure fine grise */
+  }
+  
+  /* Row Styles */
+  tbody td {
+  text-align: center; /* Alignement central du texte */
+  padding: 10px; /* Rembourrage pour le contenu des cellules */
+  border: 1px solid #ddd; /* Bordure fine grise */
+  
+    
+    
+  
+  
+  }
+  /* Style des lignes alternées */
+  tr:nth-child(odd) {
+  background-color: #f8f9fa; /* Couleur de fond gris clair */
+  
+  }
+  
+  /* Style des cellules responsives */
+  @media (max-width: 768px) {
+  th, td {
+    padding: 5px 10px; /* Réduire le rembourrage sur les petits écrans */
+  }
+  }
+  
+  tbody tr:nth-of-type(even) {
+    background-color: #cee4f8;
+  }
+  
+  tbody tr:hover {
+    background-color: #f1f1f1;
+  }
+  
+  /* Button Styles */
+  button {
+  border: none;
+  padding: 8px 12px;
+  cursor: pointer;
+  font-size: 0.875em;
+  border-radius: 25px; /* Assure un arrondi de 25 pixels */
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  
+  }
+  
+  
+  button.new {
+  background-color: #052a06;
+  color: white;
+  box-shadow: 0 4px 8px rgba(145, 166, 145, 0.4);
+  border-radius: 5px; /* Fully rounded */
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  text-transform: uppercase;
+  margin-top: 10px;
+  margin-left: 10px;
+  margin-bottom: 10px;
+  font-size: 0.875em; /* Ajustez la taille du texte */
+  font-weight: bold; /* Optionnel : pour rendre le texte en gras */
+  }
+  button.edit {
+    background-color: #7439e3;
+    color: white;
+    box-shadow: 0 4px 8px rgba(76, 175, 80, 0.4);
+    border-radius: 5px; /* Fully rounded */
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    text-transform: uppercase;
+    font-size: 0.875em; /* Ajustez la taille du texte */
+    font-weight: bold; /* Optionnel : pour rendre le texte en gras */
+    
+  }
+  
+  button.delete {
+  background-color: #f44336;
+  color: white;
+  box-shadow: 0 4px 8px rgba(76, 175, 80, 0.4);
+  border-radius: 5px; /* Fully rounded */
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  text-transform: uppercase;
+    font-size: 0.875em; /* Ajustez la taille du texte */
+  font-weight: bold; /* Optionnel : pour rendre le texte en gras */
+  
+  }
+  button.new:hover {
+  background-color: #388e3c9b; /* Darker green */
+  box-shadow: 0 6px 12px rgba(56, 142, 60, 0.4);
+  }
+  button.edit:hover {
+    background-color: #383e8e; /* Darker green */
+    box-shadow: 0 6px 12px rgba(56, 142, 60, 0.4);
+  }
+  
+  button.delete:hover {
+    background-color: #d32f2f; /* Darker red */
+    box-shadow: 0 6px 12px rgba(211, 47, 47, 0.4);
+  }
+  
+  button:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  }
+  
+  button.edit:active {
+    background-color: #2E7D32; /* Even darker green */
+  }
+  button.new:active {
+  background-color: #2E7D32; /* Even darker green */
+  }
+  
+  button.delete:active {
+    background-color: #c62828; /* Even darker red */
+  }
+  
+  
+  /* Styles pour le conteneur du bouton */
+  .button-container {
+  margin-bottom: 15px; /* Espace entre le bouton et le tableau */
+  display: flex;
+  justify-content: flex-end; /* Aligne le bouton à droite */
+  
+  }
+  
+  
+  /* Effets au survol et lors du clic */
+  .button-new:hover {
+  background-color: #45a049; /* Couleur plus foncée au survol */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+  }
+  
+  .button-new:active {
+  background-color: #388e3c; /* Couleur encore plus foncée lors du clic */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+   
+  /* Style for the limit selector container */
+  .limit-selector-container {
+  display: flex;
+  align-items: center;
+  margin: 10px 0;
+  justify-content: flex-end;
+  }
+  
+  /* Style for the label */
+  .limit-selector-container label {
+  font-weight: bold;
+  margin-right: 10px;
+  }
+  
+  /* Style for the select element */
+  .limit-selector-container select {
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  }
+  
+  /* Change border color on focus */
+  .limit-selector-container select:focus {
+  border-color: #007bff;
+  outline: none;
+  }
+  
+  /* Additional styles for the select options */
+  .limit-selector-container option {
+  padding: 5px;
+  }
+  
+  /* Style for the search container */
+  .search-container {
+  
+  
+  position:relative;
+  display: flex;
+    align-items: center;
+  }
+  
+  .search-container .fa-search {
+  position: absolute;
+  left: 10px;
+  color: #aaa;
+  }
+  
+  .search-input {
+  padding: 10px 10px 10px 30px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  width: 300px;
+  transition: all 0.3s ease;
+  }
+  
+  .search-input:focus {
+  border-color: #007bff;
+  outline: none;
+  }
+  
+  /* Style for the limit selector container */
+  .limit-selector-container {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end; /* Aligns the container to the right */
+  margin: 10px 0;
+  width: 100%; /* Takes full width of the container */
+  }
+  
+  /* Style for the label */
+  .limit-selector-container label {
+  font-weight: bold;
+  margin-right: 10px;
+  }
+  
+  /* Style for the select element */
+  .limit-selector-container select {
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  }
+  
+  /* Change border color on focus */
+  .limit-selector-container select:focus {
+  border-color: #007bff;
+  outline: none;
+  }
+  
+  /* Additional styles for the select options */
+  .limit-selector-container option {
+  padding: 5px;
+  }
+  
+  /* Style for the container holding the add button and search input */
+  .table-container-header {
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  
+  }
+  .toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+  }
+  
+  .search-form {
+    display: flex;
+    align-items: center;
+  }
+  /* style.css */
+
+.form-container {
+    max-width: 800px;
+    margin: 30px auto;
+    padding: 20px;
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease;
+  }
+  
+  .form-container:hover {
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+  }
+  
+  .form-title {
+    font-size: 0.7rem;
+    color: #333;
+    text-align: center;
+    margin-bottom: 20px;
+    font-family: 'Roboto', sans-serif;
+  }
+  
+  .article-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+  
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+  
+  .form-group label {
+    font-size: 0.75rem;
+    color: #666;
+    font-family: 'Roboto', sans-serif;
+  }
+  
+  .form-input,
+  .form-textarea {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 0.75rem;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+    font-family: 'Roboto', sans-serif;
+  }
+  
+  .form-input:focus,
+  .form-textarea:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 8px rgba(0, 123, 255, 0.2);
+    outline: none;
+  }
+  
+  .form-textarea {
+    resize: vertical;
+    min-height: 120px;
+  }
+  
+  .form-submit-button {
+    background-color: #07771b;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 15px;
+    font-size: 0.70rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    font-family: 'Roboto', sans-serif;
+    text-transform: uppercase;
+    align-self: center; /* Center the button */
+  }
+  .form-reset-button {
+    background-color: #770707;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 15px;
+    font-size: 0.70rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    font-family: 'Roboto', sans-serif;
+    text-transform: uppercase;
+    align-self: center; /* Center the button */
+  }
+  .form-submit-button:hover {
+    background-color: #0056b3;
+  }
+  
+  .form-submit-button:active {
+    transform: scale(0.98);
+  }
+ 
+  select.form-control {
+    appearance: none; /* Supprime les styles par défaut du select */
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 0.75rem;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  select.form-control:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 8px rgba(0, 123, 255, 0.2);
+    outline: none;
+  }
+    /* style.css */
+    .card-container {
+        display: grid;
+        grid-template-columns: repeat(6, 1fr);
+        gap: 10px;
+        justify-items: center;
+        align-items: start;
+        padding: 20px;
+      }
+      .card {
+        background: #fff;
+        border-radius: 15px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+        transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        position: relative;
+        
+        max-height: 320px;
+        margin: 0px;
+      }
+    
+      .card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+      }
+    
+      .card img {
+        width: 75%;
+        height: 220px;
+        border-bottom: 1px solid #eee;
+        transition: transform 0.3s ease-in-out;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+      }
+      
+    
+      .card:hover img {
+        transform: scale(1.05);
+      }
+    
+    .card-content {
+      padding: 20px;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center; /* Centre les éléments horizontalement */
+      }
+    
+      .card-title {
+        font-size: 0.8rem;
+        margin: 0 0 10px;
+        position: relative;
+        z-index: 1;
+      }
+    
+      .card-description {
+        font-size: 0.8rem;
+        color: #666;
+        position: relative;
+        z-index: 1;
+      }
+    
+      .card-button {
+        font-size: 0.75em;
+        padding: 5px 12px;
+        margin-top: 5px;
+        background-color:coral;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        letter-spacing: 1px;
+        overflow: hidden;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        z-index: 1;
+      }
+    
+      .card-button:hover {
+        background-color: #0056b3;
+      }
+    
+      .card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(135deg, rgba(255, 0, 150, 0.1) 0%, rgba(0, 204, 255, 0.1) 100%);
+        opacity: 0;
+        transition: opacity 0.3s ease-in-out;
+        z-index: 0;
+      }
+    
+      .card:hover::before {
+        opacity: 1;
+      }
+    
+
+      .bag-quantity {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 25px;
+        width: 25px;
+        border-radius: 50%;
+        background: yellow;
+        font-size: 14px;
+        font-weight: 700;
+        color: black;
+        margin-left: 5px;
+      }
+      
+      /* Home */
+      
+      .home-container {
+        padding: 2rem 4rem;
+      }
+      .home-container h2 {
+        font-size: 40px;
+        font-weight: 400;
+        text-align: center;
+      }
+      .products {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        margin-top: 2rem;
+      }
+      .product {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        margin: 1rem auto;
+        padding: 1rem;
+        border-radius: 15px;
+        width: 250px;
+        max-width: 100%;
+        height: 400px;
+        box-shadow: -5px -5px 10px rgba(255, 255, 255, 0.5),
+          2px 2px 5px rgba(94, 104, 121, 0.3);
+      }
+      .product h3 {
+        font-size: 25px;
+        font-weight: 400;
+      }
+      .product img {
+        width: 80%;
+        margin-top: 1rem;
+        margin-left: auto;
+        margin-right: auto;
+      }
+      .product .details {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .product .details .price {
+        font-size: 20px;
+        font-weight: 700;
+      }
+      .product button {
+        width: 100%;
+        height: 40px;
+        border-radius: 5px;
+        margin-top: 2rem;
+        font-weight: 400;
+        letter-spacing: 1.15px;
+        background-color: #4b70e2;
+        color: #f9f9f9;
+        border: none;
+        outline: none;
+        cursor: pointer;
+      }
+      
+      /* Cart */
+      .cart-container {
+        padding: 2rem 4rem;
+      }
+      .cart-container h2 {
+        font-weight: 400;
+        font-size: 30px;
+        text-align: center;
+      }
+      .cart-container .titles {
+        margin: 2rem 0 1rem 0;
+      }
+      .cart-container .titles h3 {
+        font-size: 14px;
+        font-weight: 400;
+        text-transform: uppercase;
+      }
+      .cart-item,
+      .cart-container .titles {
+        display: grid;
+        align-items: center;
+        grid-template-columns: 3fr 1fr 1fr 1fr;
+        column-gap: 0.5rem;
+      }
+      .cart-item {
+        border-top: 1px solid rgb(187, 187, 187);
+        padding: 1rem 0;
+      }
+      .cart-container .titles .product-title {
+        padding-left: 0.5rem;
+      }
+      .cart-container .titles .total {
+        padding-right: 0.5rem;
+        justify-self: right;
+      }
+      .cart-item .cart-product {
+        display: flex;
+      }
+      .cart-item .cart-product img {
+        width: 100px;
+        max-width: 100%;
+        margin-right: 1rem;
+      }
+      .cart-item .cart-product h3 {
+        font-weight: 400;
+      }
+      .cart-item .cart-product button {
+        border: none;
+        outline: none;
+        margin-top: 0.7rem;
+        cursor: pointer;
+        background: none;
+        color: gray;
+      }
+      .cart-item .cart-product button:hover {
+        color: black;
+      }
+      
+      .cart-item .cart-product-quantity {
+        display: flex;
+        align-items: flex-start;
+        justify-content: center;
+        width: 130px;
+        max-width: 100%;
+        border: 0.5px solid rgb(177, 177, 177);
+        border-radius: 5px;
+      }
+      .cart-item .cart-product-quantity button {
+        border: none;
+        outline: none;
+        background: none;
+        padding: 0.7rem 1.5rem;
+        cursor: pointer;
+      }
+      .cart-item .cart-product-quantity .count {
+        padding: 0.7rem 0;
+      }
+      .cart-item .cart-product-total-price {
+        padding-right: 0.5rem;
+        justify-self: right;
+        font-weight: 700;
+      }
+      
+      /* cart summary */
+      .cart-summary {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        border-top: 1px solid rgb(187, 187, 187);
+        padding-top: 2rem;
+      }
+      .cart-summary .clear-btn {
+        width: 130px;
+        height: 40px;
+        border-radius: 5px;
+        font-weight: 400;
+        letter-spacing: 1.15px;
+        border: 0.5px solid rgb(177, 177, 177);
+        color: gray;
+        background: none;
+        outline: none;
+        cursor: pointer;
+      }
+      .cart-checkout {
+        width: 270px;
+        max-width: 100%;
+      }
+      .cart-checkout .subtotal {
+        display: flex;
+        justify-content: space-between;
+        font-size: 20px;
+      }
+      .cart-checkout .amount {
+        font-weight: 700;
+      }
+      .cart-checkout p {
+        font-size: 14px;
+        font-weight: 200;
+        margin: 0.5rem 0;
+      }
+      .cart-checkout button {
+        width: 100%;
+        height: 40px;
+        border-radius: 5px;
+        font-weight: 400;
+        letter-spacing: 1.15px;
+        background-color: #4b70e2;
+        color: #f9f9f9;
+        border: none;
+        outline: none;
+        cursor: pointer;
+      }
+      .continue-shopping,
+      .start-shopping {
+        margin-top: 1rem;
+      }
+      .continue-shopping a,
+      .start-shopping a {
+        color: gray;
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+      }
+      .continue-shopping a span,
+      .start-shopping a span {
+        margin-left: 0.5rem;
+      }
+      .cart-empty {
+        font-size: 20px;
+        margin-top: 2rem;
+        color: rgb(84, 84, 84);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      
+
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .form-grid {
+      grid-template-columns: 1fr; /* Stack columns on smaller screens */
+    }
+  
+    .form-title {
+      font-size: 1.5rem;
+    }
+  
+    .form-input,
+    .form-textarea {
+      font-size: 0.9rem;
+    }
+  
+    .form-submit-button {
+      font-size: 0.9rem;
+      padding: 10px 18px;
+    }
+  }
+  .loading-message {
+    font-size: 1.5em;
+    color: blue;
+    text-align: center;
+    margin-top: 20px;
+}
+.error-message {
+  font-size: 1.5em;
+  color: red;
+  text-align: center;
+  margin-top: 20px;
+}
